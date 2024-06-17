@@ -32,7 +32,7 @@ app.use(
   })
 );
 
-const csrfProtection = csurf({ cookie: true });
+const csrfProtection = csurf({ cookie: { secure: true, sameSite: "none" } });
 app.use(csrfProtection);
 
 app.use((req, res, next) => {
