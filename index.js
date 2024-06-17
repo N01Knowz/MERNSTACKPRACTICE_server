@@ -40,15 +40,15 @@ app.get("/", (request, response) => {
   return response.status(200).send(message);
 });
 
-app.use("/books", booksRoute);
+// app.use("/books", booksRoute);
 
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => {
-    console.log("App connected to database");
-  })
-  .catch((error) => {
-    console.error("Error connecting to database:", error);
-  });
+// mongoose
+//   .connect(process.env.MONGODB_URL)
+//   .then(() => {
+//     console.log("App connected to database");
+//   })
+//   .catch((error) => {
+//     console.error("Error connecting to database:", error);
+//   });
 
 export default app;
