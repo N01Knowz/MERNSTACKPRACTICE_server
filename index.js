@@ -4,7 +4,7 @@ import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
 import csurf from "csurf";
 import cookieParser from "cookie-parser";
-import 'dotenv/config';
+import "dotenv/config";
 
 const app = express();
 app.use(express.json());
@@ -33,8 +33,11 @@ app.get("/csrf-token", (req, res) => {
 });
 
 app.get("/", (request, response) => {
-  //   console.log(request);
-  return response.status(234).send("WELCOME TO MERN STACK TUTORIAL");
+  let message = "Welcome to MERN Stack Tutorial!";
+  if (process.env.NODE_ENV === "production") {
+    message += " [Deployed]";
+  }
+  return response.status(200).send(message);
 });
 
 app.use("/books", booksRoute);
@@ -43,11 +46,9 @@ mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("App connected to database");
-
-    app.listen(process.env.PORT, () => {
-      console.log(`App is listening to PORT ${process.env.PORT}`);
-    });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("Error connecting to database:", error);
   });
+
+export default app;
