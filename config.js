@@ -1,0 +1,2 @@
+export const PORT = 5555;
+export const mongoDBURL = 'mongodb+srv://ronronarnibal:NnQjO6FFLX34X93Z@booksstoremern.iopix3d.mongodb.net/books-collection?retryWrites=true&w=majority&appName=BooksStoreMERN'
